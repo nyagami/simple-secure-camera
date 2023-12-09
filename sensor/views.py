@@ -15,7 +15,7 @@ def home(request):
         'id': history.id,
         'captured_at': history.captured_at,
         'image_url': settings.MEDIA_URL + str(history.image)
-    } for history in CameraHistory.objects.all().reverse()[:10]]
+    } for history in CameraHistory.objects.all().order_by('-id')[:10]]
 
     return render(request, 'home.html', {
         'histories': histories
