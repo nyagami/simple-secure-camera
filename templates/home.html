@@ -6,6 +6,29 @@
     <title>Secure Camera</title>
 </head>
 <body>
-    
+    <div id="main">
+        {% for history in histories %}
+        <div>
+            <h4>ID: {{ history.id }}</h4>
+            <h5>Captured at: {{ history.captured_at }}</h5>
+            <img src="{{ history.image_url }}" alt="{{history.captured_at}}" width="400">
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        const main = document.getElementById('main')
+        const ws = new WebSocket('ws://' + window.location.host + '/ws/camera/')
+        ws.onmessage = (e) => {
+            const data = JSON.parse(e.data);
+            const { id, image_url, captured_at } = data;
+            const ele = document.createElement('div');
+            ele.innerHTML = `
+            <h4>ID: ${id} </h4>
+            <h5>Captured at: ${captured_at} </h5>
+            <img src="${image_url}" alt="${captured_at}" width="400">
+            `
+            main.insertAdjacentElement('afterbegin', ele);
+        }
+    </script>
 </body>
 </html>
