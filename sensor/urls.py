@@ -2,7 +2,8 @@ from django.urls import path
 from . import views, consumers
 
 urlpatterns = [
-    path('', views.home, name='home')
+    path('', views.home, name='home'),
+    path("api/captured/", views.captured, name='captured')
 ]
 
 
