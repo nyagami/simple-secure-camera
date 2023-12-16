@@ -3,7 +3,7 @@ from . import views, consumers
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path("api/captured/", views.captured, name='captured')
+    path("api/action/", views.action, name='action')
 ]
 
 

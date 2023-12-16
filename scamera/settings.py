@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-@44vkz%$d9*)#bfrwy0#$i$rl18g0p0(yo_mm1m^!i4333u2n&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+MQTT_SERVER = '192.168.98.103'
+MQTT_PORT = 1883
+MQTT_TOPICS = ['status', 'captured']
 
 
 # Application definition
